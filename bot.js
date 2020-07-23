@@ -7,7 +7,9 @@ bot.command('Начать', (ctx) => {
 
     ctx.reply('Выберите один из указанных пунктов', null, Markup
   .keyboard([
-    [Markup.button('Хочу сделать заказ', 'primary'), Markup.button('Примеры работ', 'positive'), Markup.button('Инстаграм', 'negative')]
+    [Markup.button('Хочу сделать заказ', 'primary'), 
+     Markup.button('Примеры работ', 'positive'), 
+     Markup.button('Инстаграм', 'negative')]
   ])
   .oneTime(),
 );
