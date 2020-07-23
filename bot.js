@@ -2,7 +2,7 @@ const VkBot = require('node-vk-bot-api');
 
 const bot = new VkBot(process.env.TOKEN);
 
-bot.command(/^\d{1,} (\+|\-|\*|\/|\%|\^) \d{1,}$/, (ctx) => {
+bot.command(/^\d{1,}(\+|\-|\*|\/|\%|\^)\d{1,}$/, (ctx) => {
 
     let arr = ctx.message.text.split(" ")
     
@@ -39,7 +39,5 @@ bot.command(/^\d{1,} (\+|\-|\*|\/|\%|\^) \d{1,}$/, (ctx) => {
     }
 
 })
-
-console.log('Бот запущен')
 
 bot.startPolling();
