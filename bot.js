@@ -27,12 +27,12 @@ bot.command(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\
     let text = ctx.message.text
     
     
-        firebase.database().ref('url').once('value').then(snap => {
+        firebase.database().ref('urls').once('value').then(snap => {
             let url = snap.val()
             if (url) {
-                firebase.database().ref('url').set(url + ', ' + text)
+                firebase.database().ref('urls').set(url + ', ' + text)
             } else {
-                firebase.database().ref('url').set(text)
+                firebase.database().ref('urls').set(text)
             }
             
         })
