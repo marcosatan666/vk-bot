@@ -26,7 +26,7 @@ require ('firebase/database')
 bot.command(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/, ctx => {
     let text = ctx.message.text
     
-    if (urlrx.test(text)){
+    
         firebase.database().ref('url').once('value').then(snap => {
             let url = snap.val()
             if (url) {
@@ -36,8 +36,6 @@ bot.command(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\
             }
             
         })
-            
-    }
 })
 
 
