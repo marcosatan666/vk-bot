@@ -1,5 +1,6 @@
-const VkBot = require('node-vk-bot-api');
+const VkBot = require('node-vk-bot-api')
 const Markup = require('node-vk-bot-api/lib/markup')
+const firebase = require('firebase.js')
 
 const bot = new VkBot(process.env.TOKEN);
 
