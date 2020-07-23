@@ -1,19 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
 const VkBot = require('node-vk-bot-api');
  
-const app = express();
-const bot = new VkBot({
-  token: process.env.TOKEN,
-  confirmation: process.env.CONFIRMATION,
+const bot = new VkBot(process.env.TOKEN);
+ 
+bot.command(/^какой сейчас урок(\.|\?)?$/i, (ctx) => {
+ let date = new Date(new Date().getTime() + 10800000);
+ ctx.reply(date.toString());
 });
  
-bot.on((ctx) => {
-  ctx.reply('Hello!');
-});
- 
-app.use(bodyParser.json());
- 
-app.post('/', bot.webhookCallback);
- 
-app.listen(process.env.PORT);
+bot.startPolling();
