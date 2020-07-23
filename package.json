@@ -1,0 +1,13 @@
+{
+  "name": "vk-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "node-vk-bot-api": "^3.3.5"
+  }
+}
