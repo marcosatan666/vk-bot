@@ -13,17 +13,4 @@ bot.command('Начать', (ctx) => {
 );
 })
 
-bot.command('Хочу сделать заказ', (ctx) => {
-    //photos.getMessagesUploadServer()
-    ctx.reply('Вам предоставляется прайслист ', null, Markup
-    .keyboard([
-        [Markup.button('В полный рост', 'positive'),
-        Markup.button('По пояс', 'positive')
-        Markup.button('Бюст', 'positive')]
-        ])
-        .oneTime(),
-    );
-    })
-
-
 bot.startPolling()
