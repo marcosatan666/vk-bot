@@ -1,6 +1,5 @@
 const VkBot = require('node-vk-bot-api');
-const Markup = require('node-vk-bot-api/lib/markup')
-const firebase = require('firebase')
+//const Markup = require('node-vk-bot-api/lib/markup')
 const bot = new VkBot(process.env.TOKEN);
 
       //  bot.command('Начать', (ctx) => {
@@ -12,16 +11,30 @@ const bot = new VkBot(process.env.TOKEN);
        //   .oneTime(),
        // );
        // })
+const app = require('firebase/app'), firebase = app.initializeApp({
+    apiKey: "AIzaSyDLkYdTTDYD9Jlqk96tthmvdZ9Bg9uAyag",
+    authDomain: "tg-firebase-react-app.firebaseapp.com",
+    databaseURL: "https://tg-firebase-react-app.firebaseio.com/",
+    projectId: "tg-firebase-react-app",
+    storageBucket: "tg-firebase-react-app.appspot.com",
+    messagingSenderId: "509204905829",
+    appId: "1:509204905829:web:0b03b73ebfa35aeb2eeb8c",
+    measurementId: "G-G8ZW8G1XE6"
+});
+require ('firebase/database')
 
-bot.on('message', nsg => {
-    const id = nsg.chat.id
-    let text = nsg.text
-    const urlrx = ^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$
-
+bot.command(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/, ctx => {
+    let text = ctx.message.text
+    
     if (urlrx.test(text)){
-        firebase.database.ref('url').once('value').then(snap => {
+        firebase.database().ref('url').once('value').then(snap => {
             let url = snap.val()
-            firebase.database.ref('url').set(url + ', ' + text)
+            if (url) {
+                firebase.database().ref('url').set(url + ', ' + text)
+            } else {
+                firebase.database().ref('url').set(text)
+            }
+            
         })
             
     }
