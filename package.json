@@ -8,7 +8,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "node-vk-bot-api": "^3.3.5",
-    "firebase": "^7.16.0"
+    "node-vk-bot-api": "^3.3.5"
   }
 }
