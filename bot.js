@@ -151,6 +151,7 @@ const draw = new Scene("draw",
                     ctx.reply("Продолжить?", null, Markup.keyboard([
                     [Markup.button("Да", "positive"), Markup.button("Нет", "negative")]
                 }
+
                 default: {
                     ctx.scene.leave();
                     ctx.reply("Ну и ладно...\nВыберите один из указанных пунктов.", null, Markup.keyboard([
@@ -159,10 +160,9 @@ const draw = new Scene("draw",
                     ]))
                 }
             }
-        }
 
-const stage = new Stage(draw);
-bot.use(stage.middleware());
+const drawing = new Stage(draw);
+bot.use(drawing.middleware());
 
 bot.command("Начать", ctx => {
     ctx.reply("Выберите один из указанных пунктов.", null, Markup.keyboard([
@@ -173,7 +173,7 @@ bot.command("Начать", ctx => {
 
 bot.command("Примеры работ", ctx => {
     ctx.scene.enter("draw");
-})
+    })
 
 
 bot.startPolling();
