@@ -142,24 +142,26 @@ const draw = new Scene("draw",
         ctx.scene.next();
         ctx.reply("Я Соня и с детства увлекаюсь рисованием. С приобретением графического планшета, я наконец-то могу воплотить свои идеи не только на бумаге, но и в диджитале. Круто, да? А, точно, примеры работ...Пока что их не так уж и много, но я хочу делать свое портофолио ярким и насыщенным, а для этого нужно время. Поэтому, мой дружок-пирожок, потерпи месяцок.", "photo-163769788_457239069\nПродолжаем?", Markup.keyboard([
             [Markup.button("Да", "positive"), Markup.button("Нет", "negative")]
-            ]).oneTime())
+        ]).oneTime())
     },
     ctx => {
-            switch (ctx.message.text) {
-                case "Да": {
-                    ctx.scene.next();
-                    ctx.reply("Продолжить?", null, Markup.keyboard([
-                    [Markup.button("Да", "positive"), Markup.button("Нет", "negative")]
-                }
-
-                default: {
-                    ctx.scene.leave();
-                    ctx.reply("Ну и ладно...\nВыберите один из указанных пунктов.", null, Markup.keyboard([
-                        [Markup.button("Хочу заказ", "primary"), Markup.button("Примеры работ", "positive")],
-                        [Markup.button("Инстаграм", "negative")]
-                    ]))
-                }
+        switch (ctx.message.text) {
+            case "Да": {
+                ctx.scene.next();
+                ctx.reply("Продолжить?", null, Markup.keyboard([
+                [Markup.button("Да", "positive"), Markup.button("Нет", "negative")]
             }
+        
+            default: {
+                ctx.scene.leave();
+                ctx.reply("Ну и ладно...\nВыберите один из указанных пунктов.", null, Markup.keyboard([
+                    [Markup.button("Хочу заказ", "primary"), Markup.button("Примеры работ", "positive")],
+                    [Markup.button("Инстаграм", "negative")]
+                ]))
+            }
+        }
+    }
+)
 
 const drawing = new Stage(draw);
 bot.use(drawing.middleware());
