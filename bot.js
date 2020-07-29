@@ -140,7 +140,7 @@ bot.command("Хочу заказ", ctx => {
 const draw = new Scene("draw",
     ctx => {
         ctx.scene.next();
-        ctx.reply("Я Соня и с детства увлекаюсь рисованием. С приобретением графического планшета, я наконец-то могу воплотить свои идеи не только на бумаге, но и в диджитале. Круто, да? А, точно, примеры работ...Пока что их не так уж и много, но я хочу делать свое портофолио ярким и насыщенным, а для этого нужно время. Поэтому, мой дружок-пирожок, потерпи месяцок.", "photo-163769788_457239069\nПродолжаем?", Markup.keyboard([
+        ctx.reply("Я Соня и с детства увлекаюсь рисованием. С приобретением графического планшета, я наконец-то могу воплотить свои идеи не только на бумаге, но и в диджитале. Круто, да? А, точно, примеры работ...Пока что их не так уж и много, но я хочу делать свое портофолио ярким и насыщенным, а для этого нужно время. Поэтому, мой дружок-пирожок, потерпи месяцок.\nПродолжаем?", "photo-163769788_457239069, photo-163769788_457239076", Markup.keyboard([
             [Markup.button("Да", "positive"), Markup.button("Нет", "negative")]
         ]).oneTime())
     },
@@ -149,7 +149,9 @@ const draw = new Scene("draw",
             case "Да": {
                 ctx.scene.next();
                 ctx.reply("Продолжить?", null, Markup.keyboard([
-                [Markup.button("Да", "positive"), Markup.button("Нет", "negative")]
+                    [Markup.button("Да", "positive"), Markup.button("Нет", "negative")]
+                ]).oneTime())
+                break;
             }
         
             default: {
@@ -175,7 +177,14 @@ bot.command("Начать", ctx => {
 
 bot.command("Примеры работ", ctx => {
     ctx.scene.enter("draw");
-    })
+})
 
+
+bot.command("Инстаграм", ctx => {
+    ctx.reply("Ну вот собственно и та самая ссылка: https://www.instagram.com/marco.satan/?hl=ru", null, Markup.keyboard([
+        [Markup.button("Хочу заказ", "primary"), Markup.button("Примеры работ", "positive")],
+        [Markup.button("Инстаграм", "negative")]
+    ]))
+})
 
 bot.startPolling();
